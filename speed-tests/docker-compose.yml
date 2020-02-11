@@ -4,8 +4,6 @@ services:
     build:
       context: ""
       dockerfile: python-flask/Dockerfile
-    ports:
-      - 80:5000
     volumes:
       - "../utils/urls.json:/app/urls.json"
       - "./conf/file-none.yml:/app/conf.yml"
@@ -13,8 +11,6 @@ services:
     build:
       context: ""
       dockerfile: python-flask/Dockerfile
-    ports:
-      - 80:5000
     volumes:
       - "../utils/urls.json:/app/urls.json"
       - "./conf/file-preload.yml:/app/conf.yml"
@@ -22,8 +18,6 @@ services:
     build:
       context: ""
       dockerfile: python-tornado/Dockerfile
-    ports:
-      - 80:8888
     volumes:
       - "../utils/urls.json:/app/urls.json"
       - "./conf/file-none.yml:/app/conf.yml"
@@ -31,8 +25,13 @@ services:
     build:
       context: ""
       dockerfile: python-tornado/Dockerfile
-    ports:
-      - 80:8888
     volumes:
       - "../utils/urls.json:/app/urls.json"
       - "./conf/file-preload.yml:/app/conf.yml"
+  wrk:
+    build:
+      context: ""
+      dockerfile: wrk/Dockerfile
+    volumes:
+      - ".:/results"
+    command: -c64 -d5s -t8 -s urls.lua http://python-tornado-tornado-file-preload/

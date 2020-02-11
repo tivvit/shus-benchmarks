@@ -32,6 +32,6 @@ def make_app():
 if __name__ == '__main__':
     app = make_app()
     server = HTTPServer(app)
-    server.bind(8888)
+    server.bind(80)
     server.start(0)  # Forks multiple sub-processes
     tornado.ioloop.IOLoop.current().start()

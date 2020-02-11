@@ -54,7 +54,7 @@ request = function()
 end
 
 done = function(summary, latency, requests)
-    file = io.open('result.json', 'w')
+    file = io.open('/results/result.json', 'w')
     io.output(file)
     io.write(string.format("{\"requests_sec\":%.2f, \"transfer_sec\":\"%.2fMB\", \"avg_latency_ms\":%.2f, \"errors_sum\":%.2f, \"duration\":%.2f,\"requests\":%.2f, \"bytes\":%.2f, \"latency.min\":%.2f, \"latency.max\":%.2f, \"latency.mean\":%.2f, \"latency.stdev\":%.2f}",
             summary.requests/(summary.duration/1000000),

@@ -13,7 +13,7 @@ tests = [
 for t in tests:
     subprocess.run(["docker-compose", "up", "-d", t], cwd="../speed-tests")
     time.sleep(2)
-    subprocess.run(["wrk", "-c64", "-d5s",
-                    "-t8", "-s", "urls.lua", "http://localhost/"])
+    subprocess.run(["docker-compose", "run", "wrk", "-c64", "-d5s",
+                    "-t8", "-s", "urls.lua", "http://{}/bbUISe".format(t)], cwd="../speed-tests")
     subprocess.run(["docker-compose", "down"], cwd="../speed-tests")
-    os.rename("result.json", "reports/{}.json".format(t))
+    os.rename("../speed-tests/result.json", "reports/{}.json".format(t))
