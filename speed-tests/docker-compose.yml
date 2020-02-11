@@ -1,6 +1,6 @@
 version: '3'
 services:
-  flask-dev-file-none:
+  python-flask-dev-file-none:
     build:
       context: ""
       dockerfile: python-flask/Dockerfile
@@ -9,7 +9,7 @@ services:
     volumes:
       - "../utils/urls.json:/app/urls.json"
       - "./conf/file-none.yml:/app/conf.yml"
-  flask-dev-file-preload:
+  python-flask-dev-file-preload:
     build:
       context: ""
       dockerfile: python-flask/Dockerfile
@@ -18,7 +18,7 @@ services:
     volumes:
       - "../utils/urls.json:/app/urls.json"
       - "./conf/file-preload.yml:/app/conf.yml"
-  tornado-file-none:
+  python-tornado-tornado-file-none:
     build:
       context: ""
       dockerfile: python-tornado/Dockerfile
@@ -27,7 +27,7 @@ services:
     volumes:
       - "../utils/urls.json:/app/urls.json"
       - "./conf/file-none.yml:/app/conf.yml"
-  tornado-file-preload:
+  python-tornado-tornado-file-preload:
     build:
       context: ""
       dockerfile: python-tornado/Dockerfile
