@@ -42,10 +42,14 @@ tests = [
 
 subprocess.run(["docker-compose", "build"], cwd="../speed-tests")
 
-for t in tests:
-    subprocess.run(["docker-compose", "up", "-d", t], cwd="../speed-tests")
-    time.sleep(2)
-    subprocess.run(["docker-compose", "run", "wrk", "-c64", "-d5s",
-                    "-t8", "-s", "urls.lua", "http://{}/bbUISe".format(t)], cwd="../speed-tests")
-    subprocess.run(["docker-compose", "down"], cwd="../speed-tests")
-    os.rename("../speed-tests/result.json", "reports/{}.json".format(t))
+for i in range(3):
+    for t in tests:
+        subprocess.run(["docker-compose", "up", "-d", t], cwd="../speed-tests")
+        time.sleep(2)
+        subprocess.run(["docker-compose", "run", "wrk", "-c64", "-d5s",
+                        "-t8", "-s", "urls.lua", "http://{}/bbUISe".format(t)], cwd="../speed-tests")
+        subprocess.run(["docker-compose", "down"], cwd="../speed-tests")
+        pth = os.path.join("reports", str(i))
+        if not os.path.exists(pth):
+            os.mkdir(pth)
+        os.rename("../speed-tests/result.json", "reports/{}/{}.json".format(str(i), t))
