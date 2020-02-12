@@ -200,6 +200,20 @@ services:
     volumes:
       - "../utils/urls.json:/app/urls.json"
       - "./conf/file-preload.yml:/app/conf.yml"
+  go-http:
+    build:
+      context: ""
+      dockerfile: go-http/Dockerfile
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+  go-fast-http:
+    build:
+      context: ""
+      dockerfile: go-fast-http/Dockerfile
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
   wrk:
     build:
       context: ""
