@@ -1,19 +1,191 @@
 version: '3'
 services:
-  python-flask-dev-file-none:
+  python-flask:
     build:
       context: ""
       dockerfile: python-flask/Dockerfile
+    image: python-flask
+  python-flask-dev-file-none:
+    image: python-flask
     volumes:
       - "../utils/urls.json:/app/urls.json"
       - "./conf/file-none.yml:/app/conf.yml"
   python-flask-dev-file-preload:
-    build:
-      context: ""
-      dockerfile: python-flask/Dockerfile
+    image: python-flask
     volumes:
       - "../utils/urls.json:/app/urls.json"
       - "./conf/file-preload.yml:/app/conf.yml"
+  python-flask-gunicorn1-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 1 -t 1 -b 0.0.0.0:80
+  python-flask-gunicorn2-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 2 -t 2 -b 0.0.0.0:80
+  python-flask-gunicorn4-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 4 -t 4 -b 0.0.0.0:80
+  python-flask-gunicorn8-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 8 -t 8 -b 0.0.0.0:80
+  python-flask-gunicorn16-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 16 -t 16 -b 0.0.0.0:80
+  python-flask-gunicorn1-mainheld-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 1 -t 1 -b 0.0.0.0:80 --worker-class meinheld.gmeinheld.MeinheldWorker
+  python-flask-gunicorn2-mainheld-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 2 -t 2 -b 0.0.0.0:80 --worker-class meinheld.gmeinheld.MeinheldWorker
+  python-flask-gunicorn4-mainheld-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 4 -t 4 -b 0.0.0.0:80 --worker-class meinheld.gmeinheld.MeinheldWorker
+  python-flask-gunicorn8-mainheld-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 8 -t 8 -b 0.0.0.0:80 --worker-class meinheld.gmeinheld.MeinheldWorker
+  python-flask-gunicorn16-mainheld-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 16 -t 16 -b 0.0.0.0:80 --worker-class meinheld.gmeinheld.MeinheldWorker
+  python-flask-gunicorn1-gevent-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 1 -t 1 -b 0.0.0.0:80 --worker-class gevent
+  python-flask-gunicorn2-gevent-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 2 -t 2 -b 0.0.0.0:80 --worker-class gevent
+  python-flask-gunicorn4-gevent-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 4 -t 4 -b 0.0.0.0:80 --worker-class gevent
+  python-flask-gunicorn8-gevent-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 8 -t 8 -b 0.0.0.0:80 --worker-class gevent
+  python-flask-gunicorn16-gevent-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 16 -t 16 -b 0.0.0.0:80 --worker-class gevent
+  python-flask-gunicorn1-eventlet-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 1 -t 1 -b 0.0.0.0:80 --worker-class eventlet
+  python-flask-gunicorn2-eventlet-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 2 -t 2 -b 0.0.0.0:80 --worker-class eventlet
+  python-flask-gunicorn4-eventlet-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 4 -t 4 -b 0.0.0.0:80 --worker-class eventlet
+  python-flask-gunicorn8-eventlet-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 8 -t 8 -b 0.0.0.0:80 --worker-class eventlet
+  python-flask-gunicorn16-eventlet-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: gunicorn main:app -w 16 -t 16 -b 0.0.0.0:80 --worker-class eventlet
+  python-flask-gevent-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: python3 gev.py
+  python-flask-twisted-file-preload:
+    image: python-flask
+    environment:
+      - PYTHONPATH=.
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command:  twistd -n web --listen tcp:80 --wsgi main.app
+  python-flask-uwsgi1-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: uwsgi --http 0.0.0.0:80 --module main:app -p 1
+  python-flask-uwsgi2-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: uwsgi --http 0.0.0.0:80 --module main:app -p 2
+  python-flask-uwsgi4-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: uwsgi --http 0.0.0.0:80 --module main:app -p 4
+  python-flask-uwsgi8-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: uwsgi --http 0.0.0.0:80 --module main:app -p 8
+  python-flask-uwsgi16-file-preload:
+    image: python-flask
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+    command: uwsgi --http 0.0.0.0:80 --module main:app -p 16
+  python-flask-apache-wsgi-file-preload:
+    build:
+      context: ""
+      dockerfile: flask-wsgi-apache/Dockerfile
+    volumes:
+      - "../utils/urls.json:/var/www/apache-flask/urls.json"
+      - "./conf/file-preload.yml:/var/www/apache-flask/conf.yml"
   python-tornado-tornado-file-none:
     build:
       context: ""
