@@ -24,6 +24,4 @@ python implementations
 
 ![python-chart.png]
 
-Data in [https://docs.google.com/spreadsheets/d
-/172PCKdGEwJ7Po4p1TjBp1uGxplCJ8Z8VQS9P0jG_9uU/edit?usp=sharing](Google
- spreadsheet) - with stdev for each measurement 
+Data in [https://docs.google.com/spreadsheets/d/172PCKdGEwJ7Po4p1TjBp1uGxplCJ8Z8VQS9P0jG_9uU/edit?usp=sharing](Google spreadsheet) - with stdev for each measurement 
