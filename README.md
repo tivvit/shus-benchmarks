@@ -1,9 +1,9 @@
-# shus-benchmark 
+# shush-benchmark 
 benchmarks for self-hosted url shortener
 
 This a research repository for benchmarking of very limited set of web
  technologies and frameworks. The purpose of the project is to help make
-  framework choice for the shus project based on data.
+  framework choice for the [shush](https://github.com/tivvit/shush) project based on data.
   
 The benchmarks were run on 16 cpu 8GB RAM virtual machine in Docker
  environment. 
