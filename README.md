@@ -10,7 +10,7 @@ The benchmarks were run on 16 cpu 8GB RAM virtual machine in Docker
  
 Each server implementation is capable of loading redirect definitions from
  json file (1M urls) to memory and respond with appropriate http redirect
-  response or  404. 
+  or  404. 
  
 Wrk was used for the testing (with params `-c64 -d5s -t8`) using lua script
  which preloads test urls selected from the known urls with exponential
