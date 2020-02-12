@@ -18,10 +18,10 @@ Wrk was used for the testing (with params `-c64 -d5s -t8`) using lua script
   
 All results show number of requests per second handled by the server
 
-![complete-chart.png]
+![complete-chart](complete-chart.png)
 
 python implementations
 
-![python-chart.png]
+![python-chart](python-chart.png)
 
-Data in [https://docs.google.com/spreadsheets/d/172PCKdGEwJ7Po4p1TjBp1uGxplCJ8Z8VQS9P0jG_9uU/edit?usp=sharing](Google spreadsheet) - with stdev for each measurement 
+Data in [Google spreadsheet](https://docs.google.com/spreadsheets/d/172PCKdGEwJ7Po4p1TjBp1uGxplCJ8Z8VQS9P0jG_9uU/edit?usp=sharing) - with stdev for each measurement 
