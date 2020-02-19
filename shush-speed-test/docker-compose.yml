@@ -1,39 +1,39 @@
-version: '3'
 services:
-  json-file-ristretto:
-    image: tivvit/shush:0.0.1
-    volumes:
-      - "../utils/urls.json:/app/urls.json"
-      - "./json-file-ristretto.yml:/app/conf.yml"
-  json-file-lru:
-    image: tivvit/shush:0.0.1
-    volumes:
-      - "../utils/urls.json:/app/urls.json"
-      - "./json-file-lru.yml:/app/conf.yml"
   json-file-big:
     image: tivvit/shush:0.0.1
     volumes:
-      - "../utils/urls.json:/app/urls.json"
-      - "./json-file-big.yml:/app/conf.yml"
+    - ../utils/urls.json:/app/urls.json
+    - ./json-file-big.yml:/app/conf.yml
   json-file-fast:
     image: tivvit/shush:0.0.1
     volumes:
-      - "../utils/urls.json:/app/urls.json"
-      - "./json-file-fast.yml:/app/conf.yml"
+    - ../utils/urls.json:/app/urls.json
+    - ./json-file-fast.yml:/app/conf.yml
   json-file-free:
     image: tivvit/shush:0.0.1
     volumes:
-      - "../utils/urls.json:/app/urls.json"
-      - "./json-file-free.yml:/app/conf.yml"
+    - ../utils/urls.json:/app/urls.json
+    - ./json-file-free.yml:/app/conf.yml
+  json-file-lru:
+    image: tivvit/shush:0.0.1
+    volumes:
+    - ../utils/urls.json:/app/urls.json
+    - ./json-file-lru.yml:/app/conf.yml
   json-file-no:
     image: tivvit/shush:0.0.1
     volumes:
-      - "../utils/urls.json:/app/urls.json"
-      - "./json-file-no.yml:/app/conf.yml"
+    - ../utils/urls.json:/app/urls.json
+    - ./json-file-no.yml:/app/conf.yml
+  json-file-ristretto:
+    image: tivvit/shush:0.0.1
+    volumes:
+    - ../utils/urls.json:/app/urls.json
+    - ./json-file-ristretto.yml:/app/conf.yml
   wrk:
     build:
-      context: "../speed-tests"
+      context: ../speed-tests
       dockerfile: wrk/Dockerfile
-    volumes:
-      - ".:/results"
     command: -c64 -d5s -t8 -s urls.lua http://json-file-ristretto/
+    volumes:
+    - .:/results
+version: '3'
