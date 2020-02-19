@@ -8,6 +8,9 @@ tests = [
     "json-file-ristretto",
     "json-file-lru",
     "json-file-big",
+    "json-file-free",
+    "json-file-fast",
+    "json-file-no",
 ]
 
 cwd = "../shush-speed-test"

@@ -1,0 +1,1 @@
+{"requests_sec":16503.94, "transfer_sec":"2.00MB", "avg_latency_ms":5.18, "errors_sum":0.00, "duration":5091269.00,"requests":84026.00, "bytes":10671302.00, "latency.min":59.00, "latency.max":164004.00, "latency.mean":5179.80, "latency.stdev":8362.19}

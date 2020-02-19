@@ -15,6 +15,21 @@ services:
     volumes:
       - "../utils/urls.json:/app/urls.json"
       - "./json-file-big.yml:/app/conf.yml"
+  json-file-fast:
+    image: tivvit/shush:0.0.1
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./json-file-fast.yml:/app/conf.yml"
+  json-file-free:
+    image: tivvit/shush:0.0.1
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./json-file-free.yml:/app/conf.yml"
+  json-file-no:
+    image: tivvit/shush:0.0.1
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./json-file-no.yml:/app/conf.yml"
   wrk:
     build:
       context: "../speed-tests"
