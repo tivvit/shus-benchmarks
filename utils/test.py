@@ -41,6 +41,7 @@ tests = [
 ]
 
 subprocess.run(["docker-compose", "build"], cwd="../speed-tests")
+subprocess.run(["docker-compose", "down"], cwd="../speed-tests")
 
 for i in range(3):
     for t in tests:

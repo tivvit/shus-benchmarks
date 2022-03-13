@@ -9,11 +9,11 @@ FROM python-flask as flask
 FROM debian:latest
 
 RUN apt-get update && apt-get install -y apache2 \
-    libapache2-mod-wsgi \
+    libapache2-mod-wsgi-py3 \
     build-essential \
     python \
-    python-dev\
-    python-pip
+    python3-dev\
+    python3-pip
 
 RUN pip install flask==1.1.1 PyYAML==5.3
 

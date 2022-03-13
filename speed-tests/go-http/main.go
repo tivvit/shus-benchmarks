@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/tivvit/shus/go-shus/backend"
+	"github.com/tivvit/shush/go-shush/backend"
 	"net/http"
 )
 

@@ -1,8 +1,8 @@
 FROM python:3.9
 
 WORKDIR /app
-ADD python-flask/requirements.txt .
-RUN pip install -r requirements.txt
+ADD python-flask/requirements-gevent.txt .
+RUN pip install -r requirements-gevent.txt
 ADD python-flask/main.py .
 ADD python-flask/gev.py .
 ADD python-libs .

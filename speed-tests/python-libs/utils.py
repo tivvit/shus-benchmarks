@@ -2,7 +2,7 @@ import yaml
 
 
 def configure(fn):
-    return yaml.load(open(fn, "r"))
+    return yaml.load(open(fn, "r"), Loader=yaml.SafeLoader)
 
 
 def configure_backend(conf):

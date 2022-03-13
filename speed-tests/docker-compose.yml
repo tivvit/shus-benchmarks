@@ -1,10 +1,15 @@
-version: '3'
+version: '3.8'
 services:
   python-flask:
     build:
       context: ""
       dockerfile: python-flask/Dockerfile
     image: python-flask
+  python-gevent:
+    build:
+      context: ""
+      dockerfile: python-flask/Dockerfile-gevent
+    image: python-gevent
   python-flask-dev-file-none:
     image: python-flask
     volumes:
@@ -136,7 +141,7 @@ services:
       - "./conf/file-preload.yml:/app/conf.yml"
     command: gunicorn main:app -w 16 -t 16 -b 0.0.0.0:80 --worker-class eventlet
   python-flask-gevent-file-preload:
-    image: python-flask
+    image: python-gevent
     volumes:
       - "../utils/urls.json:/app/urls.json"
       - "./conf/file-preload.yml:/app/conf.yml"
