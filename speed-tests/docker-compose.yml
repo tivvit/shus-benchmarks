@@ -219,6 +219,27 @@ services:
     volumes:
       - "../utils/urls.json:/app/urls.json"
       - "./conf/file-preload.yml:/app/conf.yml"
+  js-nodejs:
+    build:
+      context: ""
+      dockerfile: js-nodejs/Dockerfile
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+  js-express:
+    build:
+      context: ""
+      dockerfile: js-express/Dockerfile
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
+  js-express-native-router:
+    build:
+      context: ""
+      dockerfile: js-express-native-router/Dockerfile
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
   wrk:
     build:
       context: ""
