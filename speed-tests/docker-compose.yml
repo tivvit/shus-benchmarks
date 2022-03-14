@@ -240,6 +240,13 @@ services:
     volumes:
       - "../utils/urls.json:/app/urls.json"
       - "./conf/file-preload.yml:/app/conf.yml"
+  rust-rocket:
+    build:
+      context: ""
+      dockerfile: rust-rocket/Dockerfile
+    volumes:
+      - "../utils/urls.json:/app/urls.json"
+      - "./conf/file-preload.yml:/app/conf.yml"
   wrk:
     build:
       context: ""
