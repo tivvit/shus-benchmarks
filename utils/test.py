@@ -51,7 +51,7 @@ for i in range(3):
     for t in tests:
         subprocess.run(["docker-compose", "up", "-d", t], cwd="../speed-tests")
         # time for preload
-        time.sleep(30)
+        time.sleep(8)
         subprocess.run(["docker-compose", "run", "wrk", "-c64", "-d5s",
                         "-t8", "-s", "urls.lua", "http://{}/bbUISe".format(t)], cwd="../speed-tests")
         subprocess.run(["docker-compose", "down"], cwd="../speed-tests")
