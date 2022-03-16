@@ -3,6 +3,7 @@ import json
 import csv
 import os
 
+from collections import defaultdict
 from glob import glob
 from typing import Dict, Iterable, Union, List
 
@@ -60,17 +61,32 @@ def all_graphs():
 
         plot_path = f"../plots/{dirname}"
         os.makedirs(plot_path, exist_ok=True)
-        results_transposed = df.set_index("name").T  # .astype(float)
+        results_transposed = df.set_index("name").T
         boxplot(results_transposed, os.path.join(plot_path, "results.svg"))
 
         df["lang"] = df["name"].apply(lambda x: x.split('-')[0])
         for lang in set(df["lang"]):
-            results_transposed = df[df["lang"] == lang].drop(["lang"], axis=1).set_index("name").T  # .astype(float)
+            results_transposed = df[df["lang"] == lang].drop(["lang"], axis=1).set_index("name").T
             boxplot(results_transposed, os.path.join(plot_path, f"results-{lang}.svg"))
+
+
+def compare_plots():
+    averages = defaultdict(dict)
+    for path in glob("../reports/*"):
+        dirname = os.path.basename(path)
+        results = load_results(dirname)
+        df = pandas.DataFrame(results).set_index("name").T.mean()
+        for name, avg in df.to_dict().items():
+            averages[name].update({dirname: avg})
+    results = pandas.DataFrame(averages)
+    results = results.reindex(results.sum().sort_values(ascending=False).index, axis=1)
+    results.T.plot.barh(figsize=FIG_SIZE)
+    plt.savefig("../plots/comparison.svg", bbox_inches='tight')
 
 
 def main():
     all_graphs()
+    compare_plots()
 
 
 if __name__ == '__main__':

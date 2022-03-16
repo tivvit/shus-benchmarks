@@ -2,7 +2,7 @@ import subprocess
 import os
 import time
 
-NUMBER_OF_TESTS = 3
+NUMBER_OF_TESTS = 5
 TESTS = [
     "python-flask-dev-file-none",
     "python-flask-dev-file-preload",
