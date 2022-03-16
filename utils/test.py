@@ -2,8 +2,8 @@ import subprocess
 import os
 import time
 
-
-tests = [
+NUMBER_OF_TESTS = 3
+TESTS = [
     "python-flask-dev-file-none",
     "python-flask-dev-file-preload",
     "python-flask-gunicorn1-file-preload",
@@ -44,18 +44,18 @@ tests = [
     "rust-rocket"
 ]
 
-subprocess.run(["docker-compose", "build"], cwd="../speed-tests")
-subprocess.run(["docker-compose", "down"], cwd="../speed-tests")
+if __name__ == '__main__':
+    subprocess.run(["docker-compose", "build"], cwd="../speed-tests")
+    subprocess.run(["docker-compose", "down"], cwd="../speed-tests")
 
-for i in range(3):
-    for t in tests:
-        subprocess.run(["docker-compose", "up", "-d", t], cwd="../speed-tests")
-        # time for preload
-        time.sleep(8)
-        subprocess.run(["docker-compose", "run", "wrk", "-c64", "-d5s",
-                        "-t8", "-s", "urls.lua", "http://{}/bbUISe".format(t)], cwd="../speed-tests")
-        subprocess.run(["docker-compose", "down"], cwd="../speed-tests")
-        pth = os.path.join("reports", str(i))
-        if not os.path.exists(pth):
-            os.mkdir(pth)
-        os.rename("../speed-tests/result.json", "reports/{}/{}.json".format(str(i), t))
+    for i in range(NUMBER_OF_TESTS):
+        for t in TESTS:
+            subprocess.run(["docker-compose", "up", "-d", t], cwd="../speed-tests")
+            # time for preload
+            time.sleep(8)
+            subprocess.run(["docker-compose", "run", "wrk", "-c64", "-d5s",
+                            "-t8", "-s", "urls.lua", "http://{}/bbUISe".format(t)], cwd="../speed-tests")
+            subprocess.run(["docker-compose", "down"], cwd="../speed-tests")
+            pth = os.path.join("reports", "latest", str(i))
+            os.makedirs(pth, exist_ok=True)
+            os.rename("../speed-tests/result.json", os.path.join(pth, f"{t}.json"))
