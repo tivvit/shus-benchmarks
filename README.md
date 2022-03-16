@@ -17,11 +17,14 @@ Wrk was used for the testing (with params `-c64 -d5s -t8`) using lua script
   
 All results show number of requests per second handled by the server.
 
-![complete-chart](complete-chart.png)
+![complete-chart](plots/2020-2/results.svg)
 
 ## Per language
 Python
-![python-chart](python-chart.png)
+![python-chart](plots/2020-2/results-python.svg)
+
+Go
+![python-chart](plots/2020-2/results-go.svg)
 
 See all plots in `plots`
 
