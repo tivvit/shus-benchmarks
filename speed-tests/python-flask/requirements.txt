@@ -9,5 +9,5 @@ gunicorn[tornado]==20.1.0
 meinheld==1.0.2
 tornado==6.1
 eventlet==0.33.0
-Twisted==22.2.0
+Twisted==22.4.0
 uWSGI==2.0.20
